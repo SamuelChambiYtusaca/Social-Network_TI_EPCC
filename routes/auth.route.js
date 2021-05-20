@@ -2,8 +2,10 @@ const express = require('express');
 const router = express.Router();
 //Exporta rutas
 const {
-    registerController
+    create, list, authenticate
 } = require('../controllers/auth.controller.js')
 
-router.post('/register',registerController)
+router.post('/register', create)
+router.get('/list', list)
+router.post('/login', authenticate)
 module.exports = router;

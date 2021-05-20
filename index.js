@@ -3,6 +3,7 @@ const morgan = require('morgan');
 const dotenv = require('dotenv');
 const bodypaser = require('body-parser');
 const cors = require('cors');
+const mongoose = require("mongoose");
 
 const app = express();
 dotenv.config({
@@ -12,6 +13,7 @@ dotenv.config({
 //Usar el body-parser
 
 app.use(bodypaser.json())
+
 if(process.env.NODE_ENV ==='development'){
     app.use(cors({
         origin: process.env.CLIENT_URL
@@ -20,6 +22,19 @@ if(process.env.NODE_ENV ==='development'){
     app.use(morgan('dev'))
 }
 
+mongoose.connection.on("open", () => {
+  console.log("Base de datos conectada");
+});
+
+let { HOST, DBPORT, DBNAME } = process.env;
+
+const uri = `mongodb://${HOST}:${DBPORT}/${DBNAME}`;
+mongoose.connect(uri, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+}, { ssl: true })
 
 
 //Cargando las rutas
