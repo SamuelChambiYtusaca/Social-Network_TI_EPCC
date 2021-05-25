@@ -1,0 +1,63 @@
+@import url("https://fonts.googleapis.com/css?family=Overpass");
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+.contenedor{
+    margin: 70px 60px;
+}
+.input_caja{
+    display:block;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    column-width: 20px;
+    font-family: 'Overpass';
+    font-size:21px;
+    line-height: normal;
+    border-radius: 20px;
+    width: 450px;
+    height: 45px;
+    border: 1.5px solid #789ade;
+    padding-left: 1%;
+}
+
+.etiqueta{
+    font-size: 26px;
+    color: #444B59;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    height:38px;
+    line-height: 38px;
+    font-family: "Nunito";
+    font-style: normal;
+    position: static;
+    display: block;
+}
+
+.imagen{
+    position: relative;
+    margin: -550px 530px;
+    float: left;
+}
+
+.titulo{
+    font-family: 'Overpass';
+    font-size: 36px;
+    font-weight: 800;
+    width: 400px;
+    border-radius: 60px;
+    line-height: 45px;
+}
+
+.boton{
+    position: absolute;
+    width: 450px;
+    height: 45px;
+    background: #4e67b9;
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 21px;
+    line-height: 38px;
+    letter-spacing: 0.1em;
+    color: #FFFFFF;
+    border-radius: 20px;
+    border: 2px;
+}
