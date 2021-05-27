@@ -42,8 +42,9 @@ exports.list = (req,res) => {
       })
 }
 
-exports.login = (req,res) => {
+exports.signin = (req,res) => {
     const { email, password } = req.body
+    console.log(email, password)
     User.findOne({email}, (error, user) => {
       if (error||!user) {
         return res.status(400).json({
@@ -62,5 +63,11 @@ exports.login = (req,res) => {
       // persist the token as 't' in cookie with expiration date
       res.cookie('t', token, {expire: new Date() + 9999})
       // return response with user and token to frontend client
+      const {_id, name, surname, email} = user;
+      return res.json({
+        token,
+        user: { _id, name, surname, email},
+        domain: 'EPCC'
+      })
     });
 }
