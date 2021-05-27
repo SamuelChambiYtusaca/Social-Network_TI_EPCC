@@ -16,14 +16,24 @@
   width: 450px;
   height: 45px;
   border: 1.5px solid #789ade;
-  padding-left: 1%;
+  padding: 12px 15px;
+}
+
+
+.input_caja:focus{
+  outline: none;
+  border: 2px solid #6d96e7;
+}
+
+.input_caja::placeholder{
+  color: #949494b0;
 }
 
 .etiqueta {
   font-family: Nunito;
   font-style: normal;
   font-weight: 600;
-  font-size: 28px;
+  font-size: 25px;
   line-height: 38px;
   letter-spacing: 0.1em;
 
@@ -31,23 +41,22 @@
 }
 
 .imagen {
-  position: relative;
-  margin: -550px 530px;
-  float: left;
+  position: absolute;
+  margin: -20px 30px;
+  width: 600px;
 }
 
 .titulo {
   font-family: Overpass;
   font-style: normal;
-  font-weight: 800;
-  font-size: 36px;
-  line-height: 55px;
+  font-weight: 900;
+  font-size: 35px;
   letter-spacing: 0.1em;
   color: #444b59;
 }
 
 .boton {
-  position: absolute;
+  position: relative;
   width: 450px;
   height: 45px;
   background: #4e67b9;

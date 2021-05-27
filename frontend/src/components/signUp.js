@@ -36,10 +36,11 @@ export default function Registro() {
                 </div>
                 <div>
                     <label for="contrasena" className="etiqueta">Contraseña</label>
-                    <input type="text" className="input_caja" id="contrasena" required placeholder="●●●●●●●●●●" onChange=
+                    <input type="password" className="input_caja" id="contrasena" required placeholder="●●●●●●●●●●" onChange=
                     {e=>setContrasena(e.target.value)}/>
                 </div>
-                <button type="submit" className="boton">Registrarse</button>
+                <button type="submit" className="boton" onChange=
+                    {registrar()}>Registrarse</button>
             </form>
         </div>
     )

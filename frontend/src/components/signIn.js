@@ -1,38 +1,66 @@
-import axios from 'axios'
-import React, { useState } from 'react'
-import "./styles/Form.css"
-import portada from "../img/portadaParaLogin.jpg"
+import React from "react";
+import { Container, Col, Row } from "reactstrap";
+import "./styles/Form.css";
+import portada from "../img/portada.svg";
 
-export default function Login() {
-    const [email, setEmail] = useState('');
-    const [contrasena, setContrasena] = useState('');
-
-    const ingresar = async() =>{
-        const usuario = {email, contrasena}
-        const respuesta = await axios.post("http://localhost:4000/api", usuario);
-    }
-
+class Body extends React.Component {
+  render() {
     return (
-         <div className="contenedor">
+      <Container className="contenedor mt-5">
+        <Row>
+          <Col className="mt-4 ms-5 d-inline-flex p-2 bd-highlight">
             <form>
-                <p className="titulo">BIENVENIDO DE NUEVO</p>
-                <div>
-                    No tengo una cuenta,
-                    <a href="/signup"> Registrarme</a>
-                </div>
-                <div>
-                    <label for="email" className="etiqueta">Usuario</label>
-                    <input type="text" className="input_caja" id="correo"  required placeholder="usuario@unsa.edu.pe" onChange=
-                    {e=>setEmail(e.target.value)}/>
-                </div>
-                <div>
-                    <label for="contrasena" className="etiqueta">Contraseña</label>
-                    <input type="text" className="input_caja" id="contrasena" required placeholder="●●●●●●●●●●" onChange=
-                    {e=>setContrasena(e.target.value)}/>
-                </div>
-                {/* <img className="imagen" src={portada}></img> */}
-                <button type="submit" className="boton">Registrarse</button>
+              <p className="titulo">BIENVENIDO DE NUEVO</p>
+              <div>
+                No tengo una cuenta,
+                <a href="/signup">Registrarme</a>
+              </div>
+              <div className="mt-3">
+                <label for="email" className="etiqueta">
+                  Usuario
+                </label>
+                <input
+                  onChange={this.props.onChangeEmail}
+                  className="input_caja mt-1"
+                  id="correo"
+                  required
+                  placeholder="usuario@unsa.edu.pe"
+                  type="email"
+                  value={this.props.email}
+                />
+              </div>
+              <div className="mt-3">
+                <label for="contrasena" className="etiqueta">
+                  Contraseña
+                </label>
+                <input
+                  onChange={this.props.onChangePassword}
+                  type="password"
+                  value={this.props.password}
+                  className="input_caja mt-1"
+                  id="contrasena"
+                  required
+                  placeholder="●●●●●●●●●●"
+                />
+              </div>
+              <div className="mt-4">
+                <button
+                  onClick={this.props.onClick}
+                  type="submit"
+                  className="boton"
+                >
+                  Iniciar
+                </button>
+              </div>
             </form>
-        </div>
-    )
+          </Col>
+          <Col className="ms-5">
+            <img className="imagen" src={portada} alt="img-portada" />
+          </Col>
+        </Row>
+      </Container>
+    );
+  }
 }
+
+export default Body;
