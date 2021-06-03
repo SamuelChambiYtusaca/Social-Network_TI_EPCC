@@ -3,25 +3,16 @@ const formidable = require('formidable');
 const jwt = require('jsonwebtoken')
 
 exports.create = (req,res) => {
-  let form = new formidable.IncomingForm()
-  form.keepExtensions = true
-  form.parse(req, (err, fields) => {
-    if (err) {
-      return res.status(400).json({
-        error: "Algo salió mal al formar el parse"
-      })
-    }
-    const user = new User(fields)
+    const user = new User(req.body)
     user.save((err,result) => {
       if (err) {
         return res.status(400).json({
           error: err
         })
       }
-      const { name, surname, email } = result;
-      return res.json({name: name, surname: surname, email: email})
+      const { names, surnames, email } = result;
+      return res.json({names: names, surnames: surnames, email: email})
     })
-  })
 }
 
 exports.list = (req,res) => {
@@ -44,7 +35,6 @@ exports.list = (req,res) => {
 
 exports.signin = (req,res) => {
     const { email, password } = req.body
-    console.log(email, password)
     User.findOne({email}, (error, user) => {
       if (error||!user) {
         return res.status(400).json({

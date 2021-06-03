@@ -4,11 +4,11 @@ const uuidv1 = require('uuid/v1');
 
 //Esquema de usuario
 const userSchema = new mongoose.Schema({
-    name: {
+    names: {
         type:String,
         required:true,
     },
-    surname: {
+    surnames: {
         type: String,
         required: true,
     },
