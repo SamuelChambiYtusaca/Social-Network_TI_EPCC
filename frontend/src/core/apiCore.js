@@ -37,3 +37,21 @@ export const isAuthenticated = () => {
   }
     return false;
 }
+
+//register
+
+export const signup = user => {
+  return fetch(`${API}/signup`, {
+    method: "post",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(user)
+  })
+    .then(response => {
+      return response.json();
+    })
+    .catch(err => {
+      console.log(err);
+    })
+};

@@ -43,14 +43,13 @@ const Login = (req, res) => {
 
   const redirectUser = () => {
     if(redirectToReferrer) {
-      console.log(user)
       if (user) {
-        return <Redirect to={`/home/`} />
+        return <Redirect to={`/profile/`} />
       }
     }
     if(isAuthenticated()) {
       if (user) {
-        return <Redirect to={`/home/`} />
+        return <Redirect to={`/profile/`} />
       }
     }
   }
