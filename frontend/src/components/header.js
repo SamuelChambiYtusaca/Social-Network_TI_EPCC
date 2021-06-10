@@ -7,7 +7,7 @@ class Header extends React.Component {
   render() {
     return (
       <div>
-        <Navbar className="width-100 mt-2" color="light" light expand="md">
+        <Navbar className="mt-2" color="light" light expand="md">
           <Col className="float-left ms-5">
           <NavbarBrand href="/">Red Social</NavbarBrand>
           </Col>
