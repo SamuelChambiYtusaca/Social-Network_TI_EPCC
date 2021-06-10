@@ -1,3 +1,13 @@
+.col{
+  padding: 0px;
+}
+
+.row{
+  padding: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
 .mt-35 {
   margin-top: 30vh;
 }
