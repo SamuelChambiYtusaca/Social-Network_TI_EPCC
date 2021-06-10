@@ -1,15 +1,19 @@
 import React, { useState }  from "react";
 import Body from "../components/signIn";
 import { signin, authenticate, isAuthenticated } from './apiCore';
-import { Alert, Row, Col } from 'reactstrap';
+import { Alert, Row, Col, Nav } from 'reactstrap';
 import { Redirect } from 'react-router-dom';
 import "./styles/Login.css";
-import Welcome from "../components/welcome";
+import NavBar from "../components/nav-bar";
+import SearchBar from "../components/search-bar";
+
 
 const Profile = (req, res) => {
   return (
     <div>
-      <Welcome/>
+      
+      <SearchBar/>
+      <NavBar/>
     </div>
   );
 };
