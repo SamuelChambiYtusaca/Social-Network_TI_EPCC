@@ -4,7 +4,7 @@ body{
     font-family: 'Nunito', sans-serif;
     /*background-color: black;*/
 }
-nav{
+.nav-2{
     display: flex;
     position: static;
     background: rgb(133, 146, 158 ,0.5);
@@ -15,7 +15,7 @@ nav{
     margin-right: 150px;
 }
 
-nav a{
+.nav-2 a{
     width: 100%;
     text-align: center;
     border: none;
@@ -26,7 +26,7 @@ nav a{
     display: block;
 }
 
-nav a:hover
+.nav-2 a:hover
 {
     border-radius: 10px;
     background: #cedaff;

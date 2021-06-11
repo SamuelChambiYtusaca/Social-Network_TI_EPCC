@@ -5,7 +5,7 @@ class NavBar extends React.Component {
   render() {
     return (
       <div>
-        <nav>
+        <nav className="nav-2">
           <a href="">3 Publicaciones</a>
           <a href="">1 Articulos</a>
           <a href="">1 Favoritos</a>
