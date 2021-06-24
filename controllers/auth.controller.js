@@ -53,11 +53,38 @@ exports.signin = (req,res) => {
       // persist the token as 't' in cookie with expiration date
       res.cookie('t', token, {expire: new Date() + 9999})
       // return response with user and token to frontend client
-      const {_id, name, surname, email} = user;
+      const {_id, names, surnames, email, status, followers, following} = user;
       return res.json({
         token,
-        user: { _id, name, surname, email},
+        user: { _id, names, surnames, email, status, followers, following},
         domain: 'EPCC'
       })
     });
+}
+
+exports.modify = (req,res) => {
+  const { names, surnames, email, password, newpassword, status } = req.body
+  User.findOne({email}, (error, user) => {
+    if (error||!user) {
+      return res.status(400).json({
+        error: 'Este email no está registrado'
+      });
+    }
+    
+    if (!user.authenticate(password)) {
+      return res.status(401).json({
+        error: 'Contraseña incorrecta'
+      });
+    }
+    
+    user.names = names;
+    user.surnames = surnames;
+    user.password = newpassword;
+    user.status = status;
+    user.save();
+    
+    return res.status(200).json({
+      message:'Ok'
+    });
+  });
 }
