@@ -35,7 +35,7 @@ const EditProfile = (req, res) => {
                     className="input_caja mt-1"
                     id="correo"
                     required
-                    placeholder="usuario@unsa.edu.pe"
+                    placeholder="Ingresa tu nombre aquí"
                   />
                 </div>
                 <div className="mt-3">
@@ -44,7 +44,7 @@ const EditProfile = (req, res) => {
                     className="input_caja mt-1"
                     id="correo"
                     required
-                    placeholder="usuario@unsa.edu.pe"
+                    placeholder="Ingresa tu apellido aquí"
                   />
                 </div>
                 <div className="mt-3">
