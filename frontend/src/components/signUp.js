@@ -1,5 +1,4 @@
-import axios from "axios";
-import React, { useState } from "react";
+import React from "react";
 import { Col, Row } from "reactstrap";
 import portada from "../img/portada.svg";
 import "./styles/Form.css";
