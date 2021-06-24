@@ -5,6 +5,7 @@ import Logout from '../core/Logout';
 import SignIn from '../core/SignIn';
 import SignUp from '../core/SignUp';
 import Home from '../core/Home';
+import EditProfile from '../core/EditProfile';
 
 
 const Routes = () => {
@@ -17,6 +18,7 @@ const Routes = () => {
         <Route path="/logout" exact component = {Logout} />
         <Route path="/signup" exact component = {SignUp} />
         <Route path="/profile" exact component = {Profile} />
+        <Route path="/profile/edit" exact component = {EditProfile} />
       </Switch>
     </BrowserRouter>
   )

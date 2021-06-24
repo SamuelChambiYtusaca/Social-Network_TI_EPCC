@@ -8,7 +8,7 @@ import ImgPerfil from "../img/perfil.svg";
 const Post = (props) => {
     return (
       <div class="card-post">
-          <h4>Me gusta jugar dotita p ez papa!</h4>
+          <h4>Aqui debe ir el formato de una publicación...</h4>
       </div>
     );
   };

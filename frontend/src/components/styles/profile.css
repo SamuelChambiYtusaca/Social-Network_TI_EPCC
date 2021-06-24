@@ -40,3 +40,13 @@
     margin-right: 10px;
   }
   
+  .edit-profile{
+    width: 200px;
+    background: #8699DA;
+    border-color: #8699DA;
+  }
+
+  .edit-profile:hover{
+    background: #8699DA;
+    border-color: #8699DA;
+  }
