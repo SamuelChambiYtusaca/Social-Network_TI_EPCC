@@ -1,5 +1,9 @@
 import React from "react";
+import { Link, Redirect } from "react-router-dom";
 import "./styles/search-bar.css";
+import ImgLogout from "../img/logout.svg";
+import ImgPerfil from "../img/perfil.svg";
+import ImgNotify from "../img/notify.svg";
 
 class SearchBar extends React.Component {
   render() {
@@ -12,8 +16,15 @@ class SearchBar extends React.Component {
           <input
             type="search"
             id="search"
-            placeholder="Realiza tu busqueda aca"
+            placeholder="Realiza tu busqueda aqui"
           />
+        </div>
+        <div className="container-2">
+          {/* <img className="img-notify" ref="/logout" src={ImgNotify} /> */}
+          <img className="img-perfil" ref="/logout" src={ImgPerfil} />
+          <Link to="/logout" className="alert-link">
+            <img className="img-logout" ref="/logout" src={ImgLogout} />
+          </Link>
         </div>
       </div>
     );

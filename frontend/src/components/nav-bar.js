@@ -4,12 +4,12 @@ import "./styles/nav-bar.css";
 class NavBar extends React.Component {
   render() {
     return (
-      <div>
+      <div className="box">
         <nav className="nav-2">
           <a href="">3 Publicaciones</a>
           <a href="">1 Articulos</a>
           <a href="">1 Favoritos</a>
-          <a href="">10 Gaaaaaa</a>
+          {/* <a href="">...</a> */}
         </nav>
       </div>
     );
