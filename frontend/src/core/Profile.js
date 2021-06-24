@@ -1,22 +1,37 @@
-import React, { useState }  from "react";
-import Body from "../components/signIn";
-import { signin, authenticate, isAuthenticated } from './apiCore';
-import { Alert, Row, Col, Nav } from 'reactstrap';
-import { Link, Redirect } from 'react-router-dom';
+import React, { useState } from "react";
+import { signin, authenticate, isAuthenticated } from "./apiCore";
+import { Alert, Row, Col, Nav } from "reactstrap";
 import "./styles/Login.css";
 import NavBar from "../components/nav-bar";
 import SearchBar from "../components/search-bar";
-
+import ProfileInf from "../components/profile";
+import Post from "../components/post";
 
 const Profile = (req, res) => {
   return (
     <div>
-      
-      <SearchBar/>
-      <NavBar/>
-      <Link to="/logout" className="alert-link">
-        Salir
-      </Link>
+      <Row className="section-start">
+        <Col  xs="4" className="ProfileInf">
+          <ProfileInf />
+        </Col>
+        <Col>
+          <Row>
+            <Col>
+              <SearchBar />
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <NavBar />
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Post/>
+            </Col>
+          </Row>
+        </Col>
+      </Row>
     </div>
   );
 };
