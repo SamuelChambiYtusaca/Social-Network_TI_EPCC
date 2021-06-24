@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import React from "react";
-=======
-import React, { useState } from "react";
->>>>>>> 6e6be143bbe2dacd086cafc19ed0a896f7bcfee0
 import { Col, Row } from "reactstrap";
 import portada from "../img/portada.svg";
 import "./styles/Form.css";
