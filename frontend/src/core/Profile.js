@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { signin, authenticate, isAuthenticated } from "./apiCore";
 import { Alert, Container, Row, Col, Nav } from "reactstrap";
 import "./styles/Login.css";
@@ -7,14 +7,64 @@ import SearchBar from "../components/search-bar";
 import ProfileInf from "../components/profile";
 import Post from "../components/post";
 import Auth from "../functions/auth";
+import { apigetPublications } from "../functions/consultasAPI";
 
-const Profile = (req, res) => {
+const Profile = (props) => {
+  const [post, setPost] = useState([]);
+  const posts = () => {
+    apigetPublications().then((data) => {
+      let a = data;
+      setPost(a);
+    });
+  };
+
+  useEffect(() => {
+    posts();
+  }, []);
+
+  const cards = () => {
+    let postcards;
+    postcards = [];
+    post.forEach((a) => {
+      console.log(a);
+      let e = `${a.author.names} ${a.author.surnames}`;
+      let i = "";
+      a.labels.forEach((u) => {
+        i = `${i} ${u}`;
+      });
+      let ok = 0;
+      a.userok.forEach((oki) => {
+        ok = ok + 1;
+      });
+      let o = (
+        <Post
+          title={a.title}
+          description={a.description}
+          author={e}
+          tags={i}
+          userok={ok}
+        />
+      );
+      console.log(o);
+      postcards.push(o);
+    });
+    console.log(postcards);
+    return postcards;
+  };
+
+  const nposts = () => {
+    let n = 0;
+    post.forEach((a) => {
+      n = n + 1;
+    });
+    return n;
+  };
+
   return (
     <div>
       <Auth />
-        <Row className="all-container">
-
-          <ProfileInf />
+      <Row className="all-container">
+        <ProfileInf />
         <Col className="section-main">
           <Row>
             <Col>
@@ -23,17 +73,14 @@ const Profile = (req, res) => {
           </Row>
           <Row>
             <Col>
-              <NavBar />
+              <NavBar n={nposts()} />
             </Col>
           </Row>
           <Row>
-            <Col>
-              <h5>Tienes 3 publicaciones realizadas</h5>
-              <Post />
-            </Col>
+            <Col>{cards()}</Col>
           </Row>
         </Col>
-        </Row>
+      </Row>
     </div>
   );
 };

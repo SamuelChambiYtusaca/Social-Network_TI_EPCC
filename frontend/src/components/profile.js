@@ -6,6 +6,12 @@ import "./styles/profile.css";
 import ImgPerfil from "../img/perfil.svg";
 
 const ProfileInf = (props) => {
+  
+  const names = JSON.parse(localStorage.getItem('jwt')).user.names;
+  const surnames = JSON.parse(localStorage.getItem('jwt')).user.surnames;
+  const status = JSON.parse(localStorage.getItem('jwt')).user.status;
+  const followers = JSON.parse(localStorage.getItem('jwt')).user.followers;
+  const following = JSON.parse(localStorage.getItem('jwt')).user.following;
   return (
     <div class="card-profile">
       <div>
@@ -13,16 +19,16 @@ const ProfileInf = (props) => {
       </div>
 
       <div class="container-date-profile">
-        <h4>Jose Leopoldo M.</h4>
-        <p>El cielo es azul</p>
+        <h4>{names} {surnames}</h4>
+        <p>{status}</p>
         <p>{props.description}</p>
       </div>
       <Row>
         <Col>
-          <h4>0 followers</h4>
+          <h4>{followers} followers</h4>
         </Col>
         <Col>
-          <h4>0 followings</h4>
+          <h4>{following} followings</h4>
         </Col>
       </Row>
       <Link to="/profile/edit" className="alert-link">

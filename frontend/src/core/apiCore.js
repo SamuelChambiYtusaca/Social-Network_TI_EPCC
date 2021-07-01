@@ -2,7 +2,7 @@ import {API} from "../config/confing";
 
 export const signin = user => {
   console.log(API)
-  return fetch(`${API}/signin`, {
+  return fetch(`${API}/u/signin`, {
     method: "post",
     headers: {
       "Content-Type": "application/json"
