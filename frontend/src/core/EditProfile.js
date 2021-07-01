@@ -10,12 +10,10 @@ import ProfileInf from "../components/profile";
 
 const EditProfile = (req, res) => {
   return (
-    <div>
-      <Row className="section-start">
-        <Col xs="4" className="ProfileInf">
+    <div className="scroll">
+      <Row className="all-container">
           <ProfileInf />
-        </Col>
-        <Col>
+        <Col className="section-main">
           <Row>
             <Col>
               <SearchBar />

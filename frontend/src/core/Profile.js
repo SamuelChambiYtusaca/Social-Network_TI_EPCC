@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { signin, authenticate, isAuthenticated } from "./apiCore";
-import { Alert, Row, Col, Nav } from "reactstrap";
+import { Alert, Container, Row, Col, Nav } from "reactstrap";
 import "./styles/Login.css";
 import NavBar from "../components/nav-bar";
 import SearchBar from "../components/search-bar";
@@ -12,11 +12,10 @@ const Profile = (req, res) => {
   return (
     <div>
       <Auth />
-      <Row className="section-start">
-        <Col  xs="4" className="ProfileInf">
+        <Row className="all-container">
+
           <ProfileInf />
-        </Col>
-        <Col>
+        <Col className="section-main">
           <Row>
             <Col>
               <SearchBar />
@@ -29,11 +28,11 @@ const Profile = (req, res) => {
           </Row>
           <Row>
             <Col>
-              <Post/>
+              <Post />
             </Col>
           </Row>
         </Col>
-      </Row>
+        </Row>
     </div>
   );
 };

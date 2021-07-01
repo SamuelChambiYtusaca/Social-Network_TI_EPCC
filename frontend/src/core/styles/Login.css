@@ -3,8 +3,33 @@
     margin: 0 0 0 auto;
 }
 
-.ProfileInf{
-    height: 100vh;
-    box-shadow: 1px 0px 0px 0 rgba(0, 0, 0,0.4);
-    /* filter: drop-shadow(0 0px 10px rgba(0, 0, 0, 0.089)); */
+.all-container{
+    position: absolute;
+    width: 100vw;
+    margin-left: 0px;
 }
+
+.section-left{
+    height: 100vh;
+    width: 30%;
+}
+
+.section-main{
+    width: 67vw;
+    margin-left: 31vw;
+    margin-right: 2vw;
+    position: relative;
+}
+
+::-webkit-scrollbar {
+    width: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #636363;
+    border-radius: 23px;
+}
+
+body{
+    overflow-x: hidden;
+ }
