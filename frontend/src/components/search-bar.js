@@ -20,7 +20,9 @@ class SearchBar extends React.Component {
           />
         </div>
         <div className="container-2">
-          {/* <img className="img-notify" ref="/logout" src={ImgNotify} /> */}
+          {/* <Link to="/newpost" className="alert-link">
+            <img className="img-notify" ref="/newpost" src={ImgNotify} />
+          </Link> */}
           <img className="img-perfil" ref="/logout" src={ImgPerfil} />
           <Link to="/logout" className="alert-link">
             <img className="img-logout" ref="/logout" src={ImgLogout} />

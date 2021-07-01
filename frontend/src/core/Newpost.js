@@ -5,10 +5,11 @@ import "./styles/Login.css";
 import NavBar from "../components/nav-bar";
 import SearchBar from "../components/search-bar";
 import ProfileInf from "../components/profile";
+import NewpostInf from "../components/newpost";
 import Post from "../components/post";
 import Auth from "../functions/auth";
 
-const Profile = (req, res) => {
+const Newpost = (req, res) => {
   return (
     <div>
       <Auth />
@@ -28,8 +29,7 @@ const Profile = (req, res) => {
           </Row>
           <Row>
             <Col>
-              <h5>Tienes 3 publicaciones realizadas</h5>
-              <Post />
+              <NewpostInf/>
             </Col>
           </Row>
         </Col>
@@ -38,4 +38,4 @@ const Profile = (req, res) => {
   );
 };
 
-export default Profile;
+export default Newpost;

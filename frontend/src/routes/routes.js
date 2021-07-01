@@ -6,6 +6,7 @@ import SignIn from '../core/SignIn';
 import SignUp from '../core/SignUp';
 import Home from '../core/Home';
 import EditProfile from '../core/EditProfile';
+import Newpost from '../core/Newpost';
 
 
 const Routes = () => {
@@ -19,6 +20,8 @@ const Routes = () => {
         <Route path="/signup" exact component = {SignUp} />
         <Route path="/profile" exact component = {Profile} />
         <Route path="/profile/edit" exact component = {EditProfile} />
+        {/* <Route path="/newpost" exact component = {Newpost} /> */}
+
       </Switch>
     </BrowserRouter>
   )
