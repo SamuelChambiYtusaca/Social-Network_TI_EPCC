@@ -41,8 +41,6 @@ exports.signin = (req,res) => {
           error: 'Este email no está registrado'
         });
       }
-      // if user is found make sure the email and password match
-      // create authenticate method in user model
       if (!user.authenticate(password)) {
         return res.status(401).json({
           error: 'Contraseña incorrecta'
@@ -50,9 +48,7 @@ exports.signin = (req,res) => {
       }
   
       const token = jwt.sign({_id:user._id}, process.env.JWT_SECRET)
-      // persist the token as 't' in cookie with expiration date
       res.cookie('t', token, {expire: new Date() + 9999})
-      // return response with user and token to frontend client
       const {_id, names, surnames, email, status, followers, following} = user;
       return res.json({
         token,

@@ -39,8 +39,10 @@ mongoose.connect(uri, {
 
 //Cargando las rutas
 const authRouter = require('./routes/auth.route')
+const postRouter = require('./routes/post.route')
 //Usar las rutas
-app.use('/api/',authRouter);
+app.use('/api/u/',authRouter);
+app.use('/api/p/',postRouter);
 
 app.use((req,res,next)=>{
     res.status(400).json({

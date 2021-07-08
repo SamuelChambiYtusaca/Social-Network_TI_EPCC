@@ -15,26 +15,31 @@ const userSchema = new mongoose.Schema({
   email: {
     type: String,
     trim: true,
-    required: true,
-    unique: [true, "Error"],
+    required: "Es necesario un e-mail válido para registrarse",
+    match: [/.+\@.+\..+/, "Please fill a valid email address"],
+    unique: [true, "Este e-mail ya está registrado"],
   },
   status: {
     type: String,
+    trim: true,
     default: "Hola, soy un humano y me gusta vivir",
   },
-  followers: {
-    type: Number,
-    default: 0,
+  photo: {
+    data: Buffer,
+    contentType: String,
   },
-  following: {
-    type: Number,
-    default: 0,
-  },
+  followers: [{ type: mongoose.Schema.ObjectId, ref: "User" }],
+  following: [{ type: mongoose.Schema.ObjectId, ref: "User" }],
   hashed_password: {
     type: String,
   },
   salt: {
     type: String,
+  },
+  updated: Date,
+  created: {
+    type: Date,
+    default: Date.now,
   },
 });
 
