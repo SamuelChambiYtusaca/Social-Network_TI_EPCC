@@ -17,7 +17,7 @@
 .section-main{
     width: 67vw;
     margin-left: 31vw;
-    margin-right: 2vw;
+    margin-right: 1vw;
     position: relative;
 }
 
@@ -32,4 +32,4 @@
 
 body{
     overflow-x: hidden;
- }
+}

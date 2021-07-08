@@ -9,9 +9,9 @@ class Post extends React.Component {
   render() {
     const { title, author, description, tags, userok } = this.props;
     return (
-      <div class="facebook-thumbnail">
+      <div class="facebook-thumbnail mt-2 mb-3">
         <div class="facebook-card-pub">
-          <div class="facebook-card-head">
+          <div class="facebook-card-head mt-2">
             <img class="facebook-card-user-image" src={ImgPerfil} />
             <a class="facebook-user-name" href="">
               {author}
@@ -29,7 +29,7 @@ class Post extends React.Component {
             </div>
           </div>
           <div class="facebook-reaction-butoms">
-            <div class="butom-like">
+            <div class="butom-like mt-3">
               <p class="reactions">
                 {userok}
                 <a class="mas-info-2" role="button" href="#">

@@ -6,7 +6,9 @@ import SignIn from '../core/SignIn';
 import SignUp from '../core/SignUp';
 import Home from '../core/Home';
 import EditProfile from '../core/EditProfile';
-import Newpost from '../core/Newpost';
+import CreatePost from '../core/CreatePost';
+import ProfileA from '../core/ProfileA';
+import ProfileF from '../core/ProfileF';
 
 
 const Routes = () => {
@@ -19,8 +21,10 @@ const Routes = () => {
         <Route path="/logout" exact component = {Logout} />
         <Route path="/signup" exact component = {SignUp} />
         <Route path="/profile" exact component = {Profile} />
+        <Route path="/profile/A" exact component = {ProfileA} />
+        <Route path="/profile/F" exact component = {ProfileF} />
         <Route path="/profile/edit" exact component = {EditProfile} />
-        {/* <Route path="/newpost" exact component = {Newpost} /> */}
+        <Route path="/profile/newpost" exact component = {CreatePost} />
 
       </Switch>
     </BrowserRouter>

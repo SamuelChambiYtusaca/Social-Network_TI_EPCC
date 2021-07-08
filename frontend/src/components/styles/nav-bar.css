@@ -4,16 +4,18 @@ body{
     font-family: 'Nunito', sans-serif;
     /*background-color: black;*/
 }
-.box{
+.box-nav-bar{
     position: relative;
     display: flex;
     justify-content: space-between;
     padding: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 .nav-2{
     display: flex;
     position: relative;
-    background: rgb(133, 146, 158 ,0.5);
+    background: #85929e80;
     width: 100%;
     border-radius: 10px;
     margin-top: 10px;
@@ -34,4 +36,10 @@ body{
 {
     border-radius: 10px;
     background: #cedaff;
+}
+
+.nav-2-select{
+    border-radius: 10px;
+    background: #50546177;
+    color: rgb(255, 255, 255) !important;
 }

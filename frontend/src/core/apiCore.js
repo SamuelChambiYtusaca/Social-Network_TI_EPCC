@@ -41,7 +41,7 @@ export const isAuthenticated = () => {
 //register
 
 export const signup = user => {
-  return fetch(`${API}/signup`, {
+  return fetch(`${API}/u/signup`, {
     method: "post",
     headers: {
       "Content-Type": "application/json"

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Alert, Container, Row, Col, Button } from "reactstrap";
+import { signin, authenticate, isAuthenticated } from "./apiCore";
+import { Alert, Container, Row, Col, Nav } from "reactstrap";
 import "./styles/Login.css";
 import NavBar from "../components/nav-bar";
 import SearchBar from "../components/search-bar";
@@ -9,7 +10,9 @@ import NewPost from "../components/newpost";
 import Auth from "../functions/auth";
 import { apigetPublications } from "../functions/consultasAPI";
 
-const Profile = (props) => {
+const ProfileF = (props) => {
+  const names = JSON.parse(localStorage.getItem('jwt')).user.names;
+  const surnames = JSON.parse(localStorage.getItem('jwt')).user.surnames;
 
   const [post, setPost] = useState([]);
 
@@ -35,7 +38,7 @@ const Profile = (props) => {
         i = `${i} ${u}`;
       });
       let ok = 0;
-      a.likes.forEach((oki) => {
+      a.userok.forEach((oki) => {
         ok = ok + 1;
       });
       let o = (
@@ -76,14 +79,13 @@ const Profile = (props) => {
           <Row>
             <Col>
               <NavBar
-                select="P"
+                select="F"
                 n={nposts()}
               />
             </Col>
           </Row>
           <Row>
-            <Button className="margin-sides-20px center button-newpost mt-2 mb-2" href="./newpost">Crear nueva publicación</Button>
-            <Col>{cards()}</Col>
+            {/* <Col>{cards()}</Col> */}
           </Row>
         </Col>
       </Row>
@@ -91,4 +93,4 @@ const Profile = (props) => {
   );
 };
 
-export default Profile;
+export default ProfileF;

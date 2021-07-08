@@ -10,7 +10,9 @@ class Body extends React.Component {
         <Row className="ms-5">
           <Col>
             <form>
-              <a href="/"><h2>RED SOCIAL</h2></a>
+              <a href="/">
+                <h2>RED SOCIAL</h2>
+              </a>
               <p className="titulo">INGRESA TUS DATOS</p>
               <div>
                 <label for="nombre" className="etiqueta">
@@ -18,12 +20,12 @@ class Body extends React.Component {
                 </label>
                 <input
                   onChange={this.props.onChangeNames}
+                  value={this.props.names}
                   type="text"
                   className="input_caja"
                   id="nombre"
                   required
                   placeholder="Ingresa aquí tus nombres"
-                  value={this.props.names}
                 />
               </div>
               <div>
@@ -68,8 +70,11 @@ class Body extends React.Component {
                   value={this.props.password}
                 />
               </div>
-              <button type="submit" className="boton"
-                  onClick={this.props.onClick}>
+              <button
+                className="boton"
+                type="submit"
+                onClick={this.props.onClick}
+              >
                 Registrarse
               </button>
             </form>
