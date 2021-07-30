@@ -61,10 +61,13 @@ const EditProfile = (req, res) => {
         <Col className="section-main">
           <Row>
             <Col>
-              <SearchBar />
+              <SearchBar
+                space="yes"
+              />
             </Col>
           </Row>
-          <Row className="mt-2 ms-4 me-3">
+          <Row className="mt-5"></Row>
+          <Row className="mt-5 ms-4 me-3">
               <Edit
                 onClick={clickSubmit}
                 onChangeNames={handleChange("names")}

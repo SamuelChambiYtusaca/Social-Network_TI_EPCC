@@ -76,3 +76,7 @@
   width: 60vw;
   background-color: #565f6680;
 }
+
+.fixed{
+  position: fixed;
+}

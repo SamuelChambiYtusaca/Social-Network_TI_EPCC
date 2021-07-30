@@ -8,20 +8,21 @@ import ProfileInf from "../components/profile";
 import Post from "../components/post";
 import NewPost from "../components/newpost";
 import Auth from "../functions/auth";
-import { apigetPublications } from "../functions/consultasAPI";
+import { apigetPublicationsByUser } from "../functions/consultasAPI";
 
 const ProfileF = (props) => {
-  const names = JSON.parse(localStorage.getItem('jwt')).user.names;
-  const surnames = JSON.parse(localStorage.getItem('jwt')).user.surnames;
+  
+  const id = JSON.parse(localStorage.getItem('jwt')).user._id;
 
   const [post, setPost] = useState([]);
 
   const posts = () => {
-    apigetPublications().then((data) => {
+    apigetPublicationsByUser(id).then((data) => {
       let a = data;
       setPost(a);
     });
   };
+
 
   useEffect(() => {
     posts();
@@ -72,12 +73,12 @@ const ProfileF = (props) => {
         <ProfileInf />
         <Col className="section-main">
           <Row>
-            <Col>
-              <SearchBar />
-            </Col>
+              <SearchBar
+                space="yes" />
           </Row>
-          <Row>
-            <Col>
+          <Row className="mt-4"></Row>
+          <Row className="mt-5">
+            <Col className="me-2 ms-2">
               <NavBar
                 select="F"
                 n={nposts()}

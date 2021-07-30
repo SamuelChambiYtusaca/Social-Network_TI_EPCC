@@ -1,20 +1,22 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Alert, Container, Row, Col, Button } from "reactstrap";
-import "./styles/Login.css";
+import "./styles/general.css";
 import NavBar from "../components/nav-bar";
 import SearchBar from "../components/search-bar";
 import ProfileInf from "../components/profile";
 import Post from "../components/post";
 import NewPost from "../components/newpost";
 import Auth from "../functions/auth";
-import { apigetPublications } from "../functions/consultasAPI";
+import { apigetPublicationsByUser } from "../functions/consultasAPI";
 
 const Profile = (props) => {
+
+  const id = JSON.parse(localStorage.getItem('jwt')).user._id;
 
   const [post, setPost] = useState([]);
 
   const posts = () => {
-    apigetPublications().then((data) => {
+    apigetPublicationsByUser(id).then((data) => {
       let a = data;
       setPost(a);
     });
@@ -69,12 +71,14 @@ const Profile = (props) => {
         <ProfileInf />
         <Col className="section-main">
           <Row>
-            <Col>
-              <SearchBar />
-            </Col>
+              <SearchBar
+                space="yes"
+              />
           </Row>
-          <Row>
-            <Col>
+          <Row className="mt-4"></Row>
+          <Col className="section-main">
+          <Row className="mt-5">
+            <Col className="me-2 ms-2">
               <NavBar
                 select="P"
                 n={nposts()}
@@ -83,8 +87,9 @@ const Profile = (props) => {
           </Row>
           <Row>
             <Button className="margin-sides-20px center button-newpost mt-2 mb-2" href="./newpost">Crear nueva publicación</Button>
-            <Col>{cards()}</Col>
+            {cards()}
           </Row>
+          </Col>
         </Col>
       </Row>
     </div>

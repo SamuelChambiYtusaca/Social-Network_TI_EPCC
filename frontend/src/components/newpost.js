@@ -52,6 +52,8 @@ class NewPost extends React.Component {
                 </FormText>
               </div>
               <Input
+                onChange={this.props.onChangeFile}
+                value={this.props.file}
                 className="ms-2 me-3 mb-2"
                 type="file"
                 name="file"

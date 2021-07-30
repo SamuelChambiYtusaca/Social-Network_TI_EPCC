@@ -11,12 +11,20 @@
     text-align: center;
     border-right: 1px solid rgba(0, 0, 0, 0.315);
     position: fixed;
+    z-index: 2;
 }
   
   /* .card-profile:hover {
     box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.2);
 } */
   
+.icn{
+  width: 35px;
+  position: fixed;
+  top: 15px;
+  left: 25px;
+}
+
   .container-date-profile {
     width: 100%;
     padding: 2px 16px;
@@ -51,6 +59,6 @@
   }
 
   .edit-profile:hover{
-    background: #8699DA;
+    background: #8ea2e2;
     border-color: #8699DA;
   }

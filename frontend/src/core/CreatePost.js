@@ -9,22 +9,24 @@ import ProfileInf from "../components/profile";
 import Post from "../components/post";
 import NewPost from "../components/newpost";
 import Auth from "../functions/auth";
-import { apicreatePost, apigetPublications } from "../functions/consultasAPI";
+import { apicreatePost, apigetPublicationsByUser } from "../functions/consultasAPI";
 
 const CreatePost = (props) => {
   const names = JSON.parse(localStorage.getItem('jwt')).user.names;
   const surnames = JSON.parse(localStorage.getItem('jwt')).user.surnames;
   const author = JSON.parse(localStorage.getItem('jwt')).user._id;
+  const id = JSON.parse(localStorage.getItem('jwt')).user._id;
 
   const [post, setPost] = useState([]);
   const [values, setValues] = useState({
     labels: "",
     title: "",
     description: "",
+    file: "",
     redirectToReferrer: false,
   });
 
-  const { labels, title, description, redirectToReferrer } = values;
+  const { labels, title, description, file, redirectToReferrer } = values;
 
   const handleChange = (name) => (event) => {
     setValues({ ...values, error: false, [name]: event.target.value });
@@ -53,7 +55,7 @@ const CreatePost = (props) => {
   };
 
   const posts = () => {
-    apigetPublications().then((data) => {
+    apigetPublicationsByUser(id).then((data) => {
       let a = data;
       setPost(a);
     });
@@ -80,12 +82,16 @@ const CreatePost = (props) => {
         <Col className="section-main">
           <Row>
             <Col>
-              <SearchBar />
+              <SearchBar 
+                space="yes"
+              />
             </Col>
           </Row>
-          <Row>
-            <Col>
+          <Row className="mt-4"></Row>
+          <Row className="mt-5">
+            <Col className="me-2 ms-2">
               <NavBar
+                select="P"
                 n={nposts()}
               />
             </Col>
@@ -97,10 +103,12 @@ const CreatePost = (props) => {
               onChangeLabels={handleChange("labels")}
               onChangeTitle={handleChange("title")}
               onChangeDescription={handleChange("description")}
+              onChangeFile={handleChange("file")}
               author={`${names} ${surnames}`}
               labels={labels}
               title={title}
               description={description}
+              file={file}
             />
           </Row>
         </Col>

@@ -7,7 +7,7 @@ import ImgPerfil from "../img/perfil.svg";
 
 class Post extends React.Component {
   render() {
-    const { title, author, description, tags, userok } = this.props;
+    const { title, author, description, file, tags, userok } = this.props;
     return (
       <div class="facebook-thumbnail mt-2 mb-3">
         <div class="facebook-card-pub">
@@ -26,6 +26,7 @@ class Post extends React.Component {
             <div class="facebook-down-post">
               <p class="text-content-down"> {title} </p>
               <p class="text-content-info">{description}</p>
+              <p class="text-content-info">{file}</p>
             </div>
           </div>
           <div class="facebook-reaction-butoms">

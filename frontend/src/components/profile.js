@@ -1,18 +1,51 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { Alert, Row, Col, Nav } from "reactstrap";
 import { Button } from "reactstrap";
 import "./styles/profile.css";
 import ImgPerfil from "../img/perfil.svg";
+import IcnBack from "../img/arrow.svg";
+import { apigetDataUser } from "../functions/consultasAPI";
 
 const ProfileInf = (props) => {
   const names = JSON.parse(localStorage.getItem('jwt')).user.names;
   const surnames = JSON.parse(localStorage.getItem('jwt')).user.surnames;
   const status = JSON.parse(localStorage.getItem('jwt')).user.status;
-  const followers = JSON.parse(localStorage.getItem('jwt')).user.followers;
-  const following = JSON.parse(localStorage.getItem('jwt')).user.following;
+  const id = JSON.parse(localStorage.getItem('jwt')).user._id;
+
+  const [data, setData] = useState([]);
+
+  const dataUser = () => {
+    apigetDataUser(id).then((data) => {
+      setData(data);
+    });
+  };
+
+  useEffect(() => {
+    dataUser();
+  }, []);
+
+  const nfollowers = () => {
+    let c = 0;
+    for (let o in data.followers) {
+      c++;
+    }
+    return c;
+  }
+
+  const nfollowing = () => {
+    let c = 0;
+    for (let o in data.following) {
+      c++;
+    }
+    return c;
+  }
+
   return (
     <div class="card-profile">
+      <Link to="/main">
+        <img className="icn" src={IcnBack} alt="icn-back" />
+      </Link>
       <div>
         <img className="picture-profile" src={ImgPerfil} alt="img-portada" />
       </div>
@@ -24,10 +57,10 @@ const ProfileInf = (props) => {
       </div>
       <Row>
         <Col>
-          <h4>{followers} followers</h4>
+          <h4>{nfollowers()} followers</h4>
         </Col>
         <Col>
-          <h4>{following} followings</h4>
+          <h4>{nfollowing()} followings</h4>
         </Col>
       </Row>
       <Link to="/profile/edit" className="alert-link">

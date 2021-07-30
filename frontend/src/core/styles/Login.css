@@ -15,10 +15,11 @@
 }
 
 .section-main{
-    width: 67vw;
-    margin-left: 31vw;
-    margin-right: 1vw;
-    position: relative;
+    width: 70vw;
+    margin-left: 30vw;
+    margin-right: 0vw;
+    position: absolute;
+    right: 0vw
 }
 
 ::-webkit-scrollbar {

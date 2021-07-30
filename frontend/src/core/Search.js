@@ -1,28 +1,24 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useParams } from "react-router-dom";
 import { signin, authenticate, isAuthenticated } from "./apiCore";
-import { Alert, Container, Row, Col, Nav } from "reactstrap";
+import { Alert, Container, Row, Col, Button } from "reactstrap";
 import "./styles/Login.css";
-import NavBar from "../components/nav-bar";
 import SearchBar from "../components/search-bar";
-import ProfileInf from "../components/profile";
 import Post from "../components/post";
-import NewPost from "../components/newpost";
+import Trending from "../components/trending";
 import Auth from "../functions/auth";
-import { apigetPublicationsByUser } from "../functions/consultasAPI";
+import { apigetPostSearched } from "../functions/consultasAPI";
 
-const ProfileA = (props) => {
-  
-  const id = JSON.parse(localStorage.getItem('jwt')).user._id;
-
+function Search() {
+  let { word } = useParams();
   const [post, setPost] = useState([]);
 
   const posts = () => {
-    apigetPublicationsByUser(id).then((data) => {
+    apigetPostSearched({0:word}).then((data) => {
       let a = data;
       setPost(a);
     });
   };
-
 
   useEffect(() => {
     posts();
@@ -39,7 +35,7 @@ const ProfileA = (props) => {
         i = `${i} ${u}`;
       });
       let ok = 0;
-      a.userok.forEach((oki) => {
+      a.likes.forEach((oki) => {
         ok = ok + 1;
       });
       let o = (
@@ -69,29 +65,28 @@ const ProfileA = (props) => {
   return (
     <div>
       <Auth />
-      <Row className="all-container">
-        <ProfileInf />
-        <Col className="section-main">
+        <Row className="all-container">
+        <Col>
           <Row>
-              <SearchBar
-                space="yes" />
-          </Row>
-          <Row className="mt-4"></Row>
-          <Row className="mt-5">
-            <Col className="me-2 ms-2">
-              <NavBar
-                select="A"
-                n={nposts()}
-              />
-            </Col>
-          </Row>
-          <Row>
-            {/* <Col>{cards()}</Col> */}
+            
+              <SearchBar/>
+            
           </Row>
         </Col>
-      </Row>
+        <Row className="ms-5 mt-5">
+          <Col className="mt-5 ms-5">
+          <Alert color={`info text-center alert-edit`}>
+          {`Resultados de la busqueda: (${nposts()})"${word}"`}
+        </Alert>
+            {cards()}
+          </Col>
+          <Col className="mt-1">
+            <Trending/>
+          </Col>
+        </Row>
+        </Row>
     </div>
   );
 };
 
-export default ProfileA;
+export default Search;

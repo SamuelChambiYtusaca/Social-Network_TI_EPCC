@@ -9,6 +9,8 @@ import EditProfile from '../core/EditProfile';
 import CreatePost from '../core/CreatePost';
 import ProfileA from '../core/ProfileA';
 import ProfileF from '../core/ProfileF';
+import Search from '../core/Search';
+import Main from '../core/Main';
 
 
 const Routes = () => {
@@ -20,11 +22,13 @@ const Routes = () => {
         <Route path="/profile" exact component = {Profile} />
         <Route path="/logout" exact component = {Logout} />
         <Route path="/signup" exact component = {SignUp} />
-        <Route path="/profile" exact component = {Profile} />
+        <Route path="/profile/P" exact component = {Profile} />
         <Route path="/profile/A" exact component = {ProfileA} />
         <Route path="/profile/F" exact component = {ProfileF} />
         <Route path="/profile/edit" exact component = {EditProfile} />
         <Route path="/profile/newpost" exact component = {CreatePost} />
+        <Route path="/search/:word" exact component = {Search} />
+        <Route path="/main" exact component = {Main} />
 
       </Switch>
     </BrowserRouter>
