@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 
-//Esquema de usuario
 const postSchema = new mongoose.Schema({
   title: {
     type: String,
@@ -8,15 +7,15 @@ const postSchema = new mongoose.Schema({
   },
   author: {
     type: mongoose.Schema.Types.ObjectID,
-    ref:'User',
-    created: {
-      type: Date,
-      default: Date.now
-    }
+    ref:'User'
   },
   description: {
     type: String,
     required: 'Una descripción es necesaria, no importa si es breve',
+  },
+  file: {
+    data: Buffer,
+    contentType: String
   },
   labels: [{
     type: String,
