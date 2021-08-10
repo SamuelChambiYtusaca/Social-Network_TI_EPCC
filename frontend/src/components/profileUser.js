@@ -5,24 +5,41 @@ import { Button } from "reactstrap";
 import "./styles/profile.css";
 import ImgPerfil from "../img/perfil.svg";
 import IcnBack from "../img/arrow.svg";
-import DOM, { apigetDataUser } from "../functions/consultasAPI";
+import DOM, { apigetDataUser, apigetDataFollow, apipostStatusFollow } from "../functions/consultasAPI";
 
-const ProfileInf = (props) => {
-  const names = JSON.parse(localStorage.getItem("jwt")).user.names;
-  const surnames = JSON.parse(localStorage.getItem("jwt")).user.surnames;
-  const status = JSON.parse(localStorage.getItem("jwt")).user.status;
+const ProfileInfU = (props) => {
+  const { Userid } = props;
+
   const id = JSON.parse(localStorage.getItem("jwt")).user._id;
 
   const [data, setData] = useState([]);
+  const [datafollow, setdataFollow] = useState([]);
+  const [statusfollow, setstatusFollow] = useState([]);
 
   const dataUser = () => {
-    apigetDataUser(id).then((data) => {
+    apigetDataUser(Userid).then((data) => {
       setData(data);
     });
   };
 
+  const dataFollow = () => {
+    apigetDataFollow(id, Userid).then((data) => {
+      setdataFollow(data);
+      setstatusFollow(data);
+    });
+  };
+
+  const changeFollow = () => {
+    // setstatusFollow(!statusfollow)
+    apipostStatusFollow(id,Userid).then((data) => {
+      setstatusFollow(data);
+    });
+    console.log(statusfollow)
+  };
+
   useEffect(() => {
     dataUser();
+    dataFollow();
   }, []);
 
   const nfollowers = () => {
@@ -41,6 +58,18 @@ const ProfileInf = (props) => {
     return c;
   };
 
+  const buttonValue = (a) => {
+    if (a) {
+      return (
+          "Dejar de seguir"
+      );
+    } else {
+      return (
+          "Seguir"
+      );
+    }
+  };
+
   return (
     <div class="card-profile">
       <Link to="/main">
@@ -52,9 +81,9 @@ const ProfileInf = (props) => {
 
       <div class="container-date-profile mt-3">
         <h4>
-          {names} {surnames}
+          {data.names} {data.surnames}
         </h4>
-        <p>{status}</p>
+        <p>{data.status}</p>
         <p>{props.description}</p>
       </div>
       <Row>
@@ -65,12 +94,11 @@ const ProfileInf = (props) => {
           <h4>{nfollowing()} followings</h4>
         </Col>
       </Row>
-      <Link to="/profile/edit" className="alert-link">
-        <Button color="info" className="edit-profile mt-2">
-          Editar Perfil
-        </Button>
-      </Link>
+      <Button onClick={changeFollow} color="info" className="edit-profile mt-2">
+          {buttonValue(statusfollow)}
+      </Button>
     </div>
   );
 };
-export default ProfileInf;
+
+export default ProfileInfU;

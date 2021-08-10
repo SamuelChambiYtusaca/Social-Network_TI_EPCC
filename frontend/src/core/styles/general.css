@@ -80,3 +80,7 @@
 .fixed{
   position: fixed;
 }
+
+.w{
+  width: 860px !important;
+}

@@ -32,7 +32,6 @@ const ProfileF = (props) => {
     let postcards;
     postcards = [];
     post.forEach((a) => {
-      console.log(a);
       let e = `${a.author.names} ${a.author.surnames}`;
       let i = "";
       a.labels.forEach((u) => {
@@ -44,6 +43,7 @@ const ProfileF = (props) => {
       });
       let o = (
         <Post
+          idPost={a._id}
           title={a.title}
           description={a.description}
           author={e}
@@ -51,10 +51,8 @@ const ProfileF = (props) => {
           userok={ok}
         />
       );
-      console.log(o);
       postcards.push(o);
     });
-    console.log(postcards);
     return postcards;
   };
 

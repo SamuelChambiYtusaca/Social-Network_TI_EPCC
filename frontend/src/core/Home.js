@@ -12,7 +12,7 @@ const Home = (req, res) => {
     <div>
       <Header />
       <Row className="section-start">
-        <Col className="ms-5 mt-5" >
+        <Col className="ms-5 mt-5">
           <img className="imagen" src={home} alt="img-portada" />
         </Col>
         <Col className="mt-35">
@@ -27,9 +27,8 @@ const Home = (req, res) => {
           <p className="parraf">
             Esta Red Social fue diseñada con el objetivo de instruir conceptos
             fundamentales relacionados a la metodología de trabajo agil. Fue
-            desarrollado por un grupo de cinco estudiantes para el curso de
-            Trabajo Interdiciplinar de la carrera profesional de Ciencia de la
-            Computación.{" "}
+            desarrollado por un grupo de cinco estudiantes para la carrera
+            profesional de Ciencia de la Computación.{" "}
           </p>
 
           <p className="parraf">
@@ -40,7 +39,6 @@ const Home = (req, res) => {
           </p>
         </Col>
       </Row>
-
 
       <Row>
         <h1 className="section-title">Contacto</h1>

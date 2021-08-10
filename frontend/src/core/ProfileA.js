@@ -44,6 +44,7 @@ const ProfileA = (props) => {
       });
       let o = (
         <Post
+          idPost={a._id}
           title={a.title}
           description={a.description}
           author={e}

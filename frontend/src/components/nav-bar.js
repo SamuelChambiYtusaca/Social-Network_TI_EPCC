@@ -34,14 +34,12 @@ const NavBar = (props) => {
           <a className="nav-2-select" href="">0 Favoritos</a>
         </nav>
       );
-    } else {
+    } else if (select === "U"){
       return (
         <nav className="nav-2">
           <a href="http://localhost:3000/profile/">
             {n} Publicaciones
           </a>
-          <a href="http://localhost:3000/profile/A">0 Articulos</a>
-          <a href="http://localhost:3000/profile/F">0 Favoritos</a>
         </nav>
       );
     }

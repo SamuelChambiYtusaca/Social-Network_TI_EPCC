@@ -4,16 +4,19 @@ import React from "react";
 // import { Button } from 'reactstrap';
 import "./styles/post.css";
 import ImgPerfil from "../img/perfil.svg";
+import ShowFile from "./file";
+import { DOMAIN } from "../config/confing";
 
 class Post extends React.Component {
   render() {
-    const { title, author, description, file, tags, userok } = this.props;
+    const {  idPost, title, author, id, description, tags, userok, createdAt } = this.props;
+  
     return (
       <div class="facebook-thumbnail mt-2 mb-3">
         <div class="facebook-card-pub">
           <div class="facebook-card-head mt-2">
             <img class="facebook-card-user-image" src={ImgPerfil} />
-            <a class="facebook-user-name" href="">
+            <a class="facebook-user-name" href={`${DOMAIN}/user/${id}`}>
               {author}
             </a>
           </div>
@@ -26,7 +29,9 @@ class Post extends React.Component {
             <div class="facebook-down-post">
               <p class="text-content-down"> {title} </p>
               <p class="text-content-info">{description}</p>
-              <p class="text-content-info">{file}</p>
+            </div>
+            <div className="content-file ms-5 mb-2">
+            <ShowFile id={idPost}/>
             </div>
           </div>
           <div class="facebook-reaction-butoms">

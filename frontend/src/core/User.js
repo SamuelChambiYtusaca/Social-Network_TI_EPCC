@@ -1,22 +1,23 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Alert, Container, Row, Col, Button } from "reactstrap";
+import { useParams } from "react-router-dom";
+import { Row, Col } from "reactstrap";
 import "./styles/general.css";
 import NavBar from "../components/nav-bar";
 import SearchBar from "../components/search-bar";
-import ProfileInf from "../components/profile";
 import Post from "../components/post";
-import NewPost from "../components/newpost";
 import Auth from "../functions/auth";
 import { apigetPublicationsByUser } from "../functions/consultasAPI";
+import ProfileInfU from "../components/profileUser";
 
-const Profile = (props) => {
-
+function User() {
+  
+  let { Userid } = useParams();
   const id = JSON.parse(localStorage.getItem('jwt')).user._id;
 
   const [post, setPost] = useState([]);
 
   const posts = () => {
-    apigetPublicationsByUser(id).then((data) => {
+    apigetPublicationsByUser(Userid).then((data) => {
       let a = data;
       setPost(a);
     });
@@ -30,7 +31,6 @@ const Profile = (props) => {
     let postcards;
     postcards = [];
     post.forEach((a) => {
-      console.log(a);
       let e = `${a.author.names} ${a.author.surnames}`;
       let i = "";
       a.labels.forEach((u) => {
@@ -42,7 +42,6 @@ const Profile = (props) => {
       });
       let o = (
         <Post
-          id={a.author._id}
           idPost={a._id}
           title={a.title}
           description={a.description}
@@ -51,10 +50,8 @@ const Profile = (props) => {
           userok={ok}
         />
       );
-      console.log(o);
       postcards.push(o);
     });
-    console.log(postcards);
     return postcards;
   };
 
@@ -70,7 +67,9 @@ const Profile = (props) => {
     <div>
       <Auth />
       <Row className="all-container">
-        <ProfileInf />
+        <ProfileInfU
+          Userid={Userid}
+        />
         <Col className="section-main">
           <Row>
               <SearchBar
@@ -82,13 +81,12 @@ const Profile = (props) => {
           <Row className="mt-5">
             <Col className="me-2 ms-2">
               <NavBar
-                select="P"
+                select="U"
                 n={nposts()}
               />
             </Col>
           </Row>
           <Row>
-            <Button className="margin-sides-20px center button-newpost mt-2 mb-2" href="./newpost">Crear nueva publicación</Button>
             {cards()}
           </Row>
           </Col>
@@ -98,4 +96,4 @@ const Profile = (props) => {
   );
 };
 
-export default Profile;
+export default User;

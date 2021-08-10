@@ -11,6 +11,7 @@ import ProfileA from '../core/ProfileA';
 import ProfileF from '../core/ProfileF';
 import Search from '../core/Search';
 import Main from '../core/Main';
+import User from '../core/User';
 
 
 const Routes = () => {
@@ -19,16 +20,17 @@ const Routes = () => {
       <Switch>
         <Route path="/" exact component = {Home} />
         <Route path="/signin" exact component = {SignIn} />
-        <Route path="/profile" exact component = {Profile} />
-        <Route path="/logout" exact component = {Logout} />
         <Route path="/signup" exact component = {SignUp} />
+        <Route path="/logout" exact component = {Logout} />
+        <Route path="/profile" exact component = {Profile} />
         <Route path="/profile/P" exact component = {Profile} />
         <Route path="/profile/A" exact component = {ProfileA} />
         <Route path="/profile/F" exact component = {ProfileF} />
         <Route path="/profile/edit" exact component = {EditProfile} />
         <Route path="/profile/newpost" exact component = {CreatePost} />
-        <Route path="/search/:word" exact component = {Search} />
         <Route path="/main" exact component = {Main} />
+        <Route path="/search/:word" exact component = {Search} />
+        <Route path="/user/:Userid" exact component = {User} />
 
       </Switch>
     </BrowserRouter>

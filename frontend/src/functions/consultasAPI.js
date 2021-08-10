@@ -1,5 +1,10 @@
 const API = "http://localhost:5000/api";
 
+export default API;
+export const DOM = () =>{
+  return "http://localhost:3000";
+} 
+
 export const apigetPublications = () => {
   return fetch(`${API}/p/list`, {
     method: "get",
@@ -29,6 +34,55 @@ export const apigetPublicationsByUser = (id) => {
       console.log(err);
     })
 }
+
+export const apigetDataFollow = (id, Userid) => {
+  return fetch(`${API}/u/follow/check`, {
+    method: "post",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({id,Userid})
+  })
+    .then(response => {
+      return response.json()
+    })
+    .catch(err => {
+      console.log(err);
+    })
+}
+
+
+export const apicheckFile = (id) => {
+  return fetch(`${API}/p/file/check/${id}`, {
+    method: "get",
+    headers: {
+      "Content-Type": "application/json"
+    },
+  })
+    .then(response => {
+      return response.json()
+    })
+    .catch(err => {
+      console.log(err);
+    })
+}
+
+export const apipostStatusFollow = (id, Userid) => {
+  return fetch(`${API}/u/follow/modify`, {
+    method: "post",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({id,Userid})
+  })
+    .then(response => {
+      return response.json()
+    })
+    .catch(err => {
+      console.log(err);
+    })
+}
+
 export const apimodifyUser = (object) => {
   return fetch(`${API}/u/modify`, {
     method: "post",
@@ -47,11 +101,11 @@ export const apimodifyUser = (object) => {
 
 export const apicreatePost = (object) => {
   return fetch(`${API}/p/create`, {
-    method: "post",
+    method: "POST",
     headers: {
-      "Content-Type": "application/json"
+      Accept: 'application/json',
     },
-    body: JSON.stringify(object)
+    body: object
   })
     .then(response => {
       return response.json()

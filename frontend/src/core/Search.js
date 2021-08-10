@@ -40,6 +40,8 @@ function Search() {
       });
       let o = (
         <Post
+          id={a.author._id}
+          idPost={a._id}
           title={a.title}
           description={a.description}
           author={e}

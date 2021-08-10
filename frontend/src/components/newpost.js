@@ -9,8 +9,8 @@ class NewPost extends React.Component {
   render() {
     const { author } = this.props;
     return (
-      <div className="facebook-thumbnail mt-2 mb-3">
-        <div className="facebook-card-pub">
+      <div className="facebook-thumbnail mt-3 mb-3">
+        <form className="facebook-card-pub" onSubmit={this.props.onSubmit}>
           <div className="facebook-card-head mt-2">
             <img className="facebook-card-user-image" src={ImgPerfil} />
             <a className="facebook-user-name" href="">
@@ -51,23 +51,24 @@ class NewPost extends React.Component {
                   Si deseas puedes subir una imagen o artículo en pdf :D
                 </FormText>
               </div>
-              <Input
+              <input
                 onChange={this.props.onChangeFile}
-                value={this.props.file}
                 className="ms-2 me-3 mb-2"
                 type="file"
                 name="file"
-                id="file"
               />
             </div>
           </div>
           <div>
-            <Button type="submit" 
-                  onClick={this.props.onClick} className="edit-profile mt-2 center" color="primary">
+            <Button
+              type="submit"
+              className="edit-profile mt-2 center"
+              color="primary"
+            >
               Publicar
             </Button>
           </div>
-        </div>
+        </form>
       </div>
     );
   }
