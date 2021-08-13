@@ -127,7 +127,7 @@ npm run start
 
 -**Pagina Principal.** `http://localhost:3000/main/`
 
-![](https://github.com/JPostigo48/DBP-B-Social-Network-EPCC/blob/main/Presentacion/Paginal%20Principal.png?raw=true)
+![](https://github.com/SamuelChambiYtusaca/Social-Network_TI_EPCC/blob/master/Presentacion/Pagina%20Principal.png?raw=true)
 >Success.
 
 -**Pagina Perfil.** `http://localhost:3000/profile/`
@@ -152,15 +152,15 @@ npm run start
 
 -**Publicación Creada.**
 
-![](https://github.com/JPostigo48/DBP-B-Social-Network-EPCC/blob/main/Presentacion/Created%20Post.png?raw=true)
+![](https://github.com/SamuelChambiYtusaca/Social-Network_TI_EPCC/blob/master/Presentacion/PublicacionCreada.png?raw=true)
 >Success.
 
 -**Busqueda de Publicaciones.**
 
-![](https://github.com/JPostigo48/DBP-B-Social-Network-EPCC/blob/main/Presentacion/Search%20Result.png?raw=true)
+![](https://github.com/SamuelChambiYtusaca/Social-Network_TI_EPCC/blob/master/Presentacion/Busqueda.png?raw=true)
 >Success.
 
 -**Likes a Publicaciones.**
 
-![](https://github.com/JPostigo48/DBP-B-Social-Network-EPCC/blob/main/Presentacion/Likes.png?raw=true)
+![](https://github.com/SamuelChambiYtusaca/Social-Network_TI_EPCC/blob/master/Presentacion/Likes.png?raw=true)
 >Success.
