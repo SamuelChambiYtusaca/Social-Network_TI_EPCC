@@ -81,6 +81,7 @@ git clone https://github.com/SamuelChambiYtusaca/Social-Network_TI_EPCC.git
 ```
 #### Inicialización Backend
 - Abrir una consola cmd en la carpeta base del proyecto.
+- Aseguresé de estar en la carpeta `Social-Network_TI_EPCC/`
 - Ejecute las lineas de comando
 ```shell 
 cd Backend
@@ -98,6 +99,7 @@ npm run dev
 
 #### Inicialización Frontend
 - Abrir una consola cmd en la carpeta base del proyecto.
+- - Aseguresé de estar en la carpeta `Social-Network_TI_EPCC/`
 - Ejecute las lineas de comando
 ```shell 
 cd Frontend
