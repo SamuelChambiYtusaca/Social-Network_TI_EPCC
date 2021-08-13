@@ -1,4 +1,4 @@
-# DBP-B-Social-Network-EPCC
+# Trabajo Interdisciplinar - B - Social-Network-EPCC
 # PROYECTO FINAL
 ### INTRODUCCIÓN
 Nuestro proyecto final es una **Red Social** que fue diseñada con el objetivo de consolidar los conceptos reacionados con el curso **Trabajo Interdisciplinar**.  Somos un grupo conformado por cinco estudiantes de la carrera Ciencia de la Computación.
