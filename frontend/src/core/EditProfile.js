@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { signin, authenticate, isAuthenticated } from "./apiCore";
 import { Alert, Row, Col, Nav } from "reactstrap";
 import { Link, Redirect } from "react-router-dom";
@@ -18,23 +18,33 @@ const EditProfile = (req, res) => {
     surnames: "",
     password: "",
     newpassword: "",
+    photo: "",
     status: "",
+    formData: "",
     alert: "Escriba todos sus datos por favor :D",
     alertColor: "info",
     redirectToReferrer: false,
   });
 
-  const { names, surnames, password, newpassword, status, alert, alertColor, redirectToReferrer } = values;
+  const { names, surnames, password, newpassword, status, alert, alertColor, photo,
+    formData, redirectToReferrer } = values;
+
+    useEffect(() => {
+      setValues({ ...values, formData: new FormData() });
+    }, []);
   
   const handleChange = (name) => (event) => {
-    setValues({ ...values, error: false, [name]: event.target.value });
+    const value = name === "photo" ? event.target.files[0] : event.target.value;
+    formData.set("email", email)
+    formData.set(name, value);
+    setValues({ ...values, error: false, [name]: value });
     console.log(values)
   };
 
   const clickSubmit = (event) => {
     event.preventDefault();
     setValues({ ...values, error: false });
-    apimodifyUser({ names, surnames, email, password, newpassword, status }).then((data) => {
+    apimodifyUser(formData).then((data) => {
       if (data.error) {
         setValues({ ...values, alertColor:"danger",alert: data.error });
       } else {
@@ -69,12 +79,13 @@ const EditProfile = (req, res) => {
           <Row className="mt-5"></Row>
           <Row className="mt-5 ms-4 me-3">
               <Edit
-                onClick={clickSubmit}
+                onSubmit={clickSubmit}
                 onChangeNames={handleChange("names")}
                 onChangeSurnames={handleChange("surnames")}
                 onChangePassword={handleChange("password")}
                 onChangeNewPassword={handleChange("newpassword")}
                 onChangeStatus={handleChange("status")}
+                onChangePhoto={handleChange("photo")}
                 names={names}
                 surnames={surnames}
                 password={password}

@@ -7,18 +7,16 @@ import ProfileInf from "../components/profile";
 import Post from "../components/post";
 import NewPost from "../components/newpost";
 import Auth from "../functions/auth";
-import { apigetPublicationsByUser } from "../functions/consultasAPI";
+import { apigetPublicationsByUser, getId } from "../functions/consultasAPI";
 
 const Profile = (props) => {
 
-  const id = JSON.parse(localStorage.getItem('jwt')).user._id;
-
   const [post, setPost] = useState([]);
+  const id = getId();
 
   const posts = () => {
     apigetPublicationsByUser(id).then((data) => {
-      let a = data;
-      setPost(a);
+      setPost(data);
     });
   };
 
@@ -29,40 +27,44 @@ const Profile = (props) => {
   const cards = () => {
     let postcards;
     postcards = [];
-    post.forEach((a) => {
-      console.log(a);
-      let e = `${a.author.names} ${a.author.surnames}`;
-      let i = "";
-      a.labels.forEach((u) => {
-        i = `${i} ${u}`;
+    if (post.length !== 0) {
+      post.forEach((a) => {
+        console.log(a);
+        let e = `${a.author.names} ${a.author.surnames}`;
+        let i = "";
+        a.labels.forEach((u) => {
+          i = `${i} ${u}`;
+        });
+        let ok = 0;
+        a.likes.forEach((oki) => {
+          ok = ok + 1;
+        });
+        let o = (
+          <Post
+            id={id}
+            idPost={a._id}
+            title={a.title}
+            description={a.description}
+            author={e}
+            authorId={a.author._id}
+            tags={i}
+            userok={ok}
+          />
+        );
+        postcards.push(o);
       });
-      let ok = 0;
-      a.likes.forEach((oki) => {
-        ok = ok + 1;
-      });
-      let o = (
-        <Post
-          id={a.author._id}
-          idPost={a._id}
-          title={a.title}
-          description={a.description}
-          author={e}
-          tags={i}
-          userok={ok}
-        />
-      );
-      console.log(o);
-      postcards.push(o);
-    });
+    }
     console.log(postcards);
     return postcards;
   };
 
   const nposts = () => {
     let n = 0;
-    post.forEach((a) => {
-      n = n + 1;
-    });
+    if (post.length !==0) {
+      post.forEach((a) => {
+        n = n + 1;
+      });
+    }
     return n;
   };
 

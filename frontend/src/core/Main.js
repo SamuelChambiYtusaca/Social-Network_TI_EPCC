@@ -7,10 +7,15 @@ import SearchBar from "../components/search-bar";
 import Post from "../components/post";
 import Trending from "../components/trending";
 import Auth from "../functions/auth";
-import { apigetPublications } from "../functions/consultasAPI";
+import { apigetPublications, getId } from "../functions/consultasAPI";
 
 const Main = (req, res) => {
   const [post, setPost] = useState([]);
+  const [id, setId] = useState();
+
+  const getid = () => {
+      setId(getId());
+  }
 
   const posts = () => {
     apigetPublications().then((data) => {
@@ -20,6 +25,7 @@ const Main = (req, res) => {
   };
 
   useEffect(() => {
+    getid();
     posts();
   }, []);
 
@@ -39,11 +45,12 @@ const Main = (req, res) => {
       });
       let o = (
         <Post
-          id={a.author._id}
+          id={id}
           idPost={a._id}
           title={a.title}
           description={a.description}
           author={e}
+          authorId={a.author._id}
           tags={i}
           userok={ok}
         />

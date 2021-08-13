@@ -11,12 +11,12 @@ class Edit extends React.Component {
     const surnames = JSON.parse(localStorage.getItem("jwt")).user.surnames;
     const status = JSON.parse(localStorage.getItem("jwt")).user.status;
     return (
+          <form onSubmit={this.props.onSubmit}>
       <Row>
         <Alert color={`${this.props.alertColor} text-center alert-edit`}>
           {this.props.alert}
         </Alert>
-        <Col className="form-edit ms-4 me-3">
-          <form>
+          <Col className="form-edit ms-4 me-3">
             <div className="mb-3">
               <label className="etiqueta-edit">Nombres</label>
               <input
@@ -63,7 +63,6 @@ class Edit extends React.Component {
                 placeholder="●●●●●●●●●●"
               />
             </div>
-          </form>
         </Col>
         <Col className="profile-edit">
           <div className="ms-4 me-3">
@@ -72,7 +71,14 @@ class Edit extends React.Component {
               className="picture-profile center mb-3 mt-3"
               src={ImgPerfil}
               alt="img-portada"
-            />
+              />
+            <input
+                onChange={this.props.onChangePhoto}
+                className="ms-2 me-3 mb-2"
+                type="file"
+                name="photo"
+                accept="image/*"
+                />
           </div>
           <div className="ms-4 me-3">
             <label for="status" className="etiqueta-edit">
@@ -86,18 +92,15 @@ class Edit extends React.Component {
               id="status"
               rows="2"
               placeholder={status}
-            ></textarea>
+              ></textarea>
           </div>
         </Col>
         <Row>
           <Row className="mb-3 mt-2">
             <Col className="ms-5">
-              <Link to="/profile/" className="alert-link">
-                <Button  type="submit" 
-                  onClick={this.props.onClick} color="info" className="edit-profile center">
+                <Button  type="submit" color="info" className="edit-profile center">
                   Editar
                 </Button>
-              </Link>
             </Col>
             <Col className="me-5">
               <Link to="/profile/" className="alert-link">
@@ -109,6 +112,7 @@ class Edit extends React.Component {
           </Row>
         </Row>
       </Row>
+              </form>
     );
   }
 }

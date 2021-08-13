@@ -8,21 +8,18 @@ import ProfileInf from "../components/profile";
 import Post from "../components/post";
 import NewPost from "../components/newpost";
 import Auth from "../functions/auth";
-import { apigetPublicationsByUser } from "../functions/consultasAPI";
+import { apigetPublicationsByUser, getId } from "../functions/consultasAPI";
 
 const ProfileA = (props) => {
-  
-  const id = JSON.parse(localStorage.getItem('jwt')).user._id;
 
   const [post, setPost] = useState([]);
+  const id = getId();
 
   const posts = () => {
     apigetPublicationsByUser(id).then((data) => {
-      let a = data;
-      setPost(a);
+      setPost(data);
     });
   };
-
 
   useEffect(() => {
     posts();
@@ -44,10 +41,12 @@ const ProfileA = (props) => {
       });
       let o = (
         <Post
+          id={id}
           idPost={a._id}
           title={a.title}
           description={a.description}
           author={e}
+          authorId={a.author._id}
           tags={i}
           userok={ok}
         />

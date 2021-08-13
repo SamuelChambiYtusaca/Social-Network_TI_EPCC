@@ -6,20 +6,19 @@ import NavBar from "../components/nav-bar";
 import SearchBar from "../components/search-bar";
 import Post from "../components/post";
 import Auth from "../functions/auth";
-import { apigetPublicationsByUser } from "../functions/consultasAPI";
+import { apigetPublicationsByUser, getId } from "../functions/consultasAPI";
 import ProfileInfU from "../components/profileUser";
 
 function User() {
   
   let { Userid } = useParams();
-  const id = JSON.parse(localStorage.getItem('jwt')).user._id;
 
   const [post, setPost] = useState([]);
+  const id = getId();
 
   const posts = () => {
     apigetPublicationsByUser(Userid).then((data) => {
-      let a = data;
-      setPost(a);
+      setPost(data);
     });
   };
 
@@ -42,10 +41,12 @@ function User() {
       });
       let o = (
         <Post
+          id={id}
           idPost={a._id}
           title={a.title}
           description={a.description}
           author={e}
+          authorId={a.author._id}
           tags={i}
           userok={ok}
         />

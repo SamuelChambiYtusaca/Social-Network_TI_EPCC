@@ -5,15 +5,13 @@ import { Button } from "reactstrap";
 import "./styles/profile.css";
 import ImgPerfil from "../img/perfil.svg";
 import IcnBack from "../img/arrow.svg";
-import DOM, { apigetDataUser } from "../functions/consultasAPI";
+import DOM, { apigetDataUser, getId } from "../functions/consultasAPI";
+import API from "../functions/consultasAPI";
 
 const ProfileInf = (props) => {
-  const names = JSON.parse(localStorage.getItem("jwt")).user.names;
-  const surnames = JSON.parse(localStorage.getItem("jwt")).user.surnames;
-  const status = JSON.parse(localStorage.getItem("jwt")).user.status;
-  const id = JSON.parse(localStorage.getItem("jwt")).user._id;
 
   const [data, setData] = useState([]);
+  const id = getId();
 
   const dataUser = () => {
     apigetDataUser(id).then((data) => {
@@ -41,20 +39,26 @@ const ProfileInf = (props) => {
     return c;
   };
 
+  const Img = () => {
+    console.log(id)
+    // return `${DOM}/u/photo/${id}`
+    return ImgPerfil
+  }
+
   return (
     <div class="card-profile">
       <Link to="/main">
         <img className="icn" src={IcnBack} alt="icn-back" />
       </Link>
       <div>
-        <img className="picture-profile" src={ImgPerfil} alt="img-portada" />
+        <img className="picture-profile" src={Img()} alt="img-portada" />
       </div>
 
       <div class="container-date-profile mt-3">
         <h4>
-          {names} {surnames}
+          {data.names} {data.surnames}
         </h4>
-        <p>{status}</p>
+        <p>{data.status}</p>
         <p>{props.description}</p>
       </div>
       <Row>
