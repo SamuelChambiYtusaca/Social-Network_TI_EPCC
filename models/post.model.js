@@ -7,7 +7,8 @@ const postSchema = new mongoose.Schema({
   },
   author: {
     type: mongoose.Schema.Types.ObjectID,
-    ref:'User'
+    ref:'User',
+    required: 'Hubo un error al cargar tu publicación, intenta cerrar sesión y volver a entrar',
   },
   description: {
     type: String,
@@ -15,7 +16,7 @@ const postSchema = new mongoose.Schema({
   },
   file: {
     data: Buffer,
-    contentType: String
+    contentType: String,
   },
   labels: [{
     type: String,
