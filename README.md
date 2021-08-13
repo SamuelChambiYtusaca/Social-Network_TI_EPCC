@@ -147,7 +147,7 @@ npm run start
 
 -**Pagina Crear Publicación.** `http://localhost:3000/profile/newpost`
 
-![](https://github.com/JPostigo48/DBP-B-Social-Network-EPCC/blob/main/Presentacion/Create%20Post.png?raw=true)
+![](https://github.com/SamuelChambiYtusaca/Social-Network_TI_EPCC/blob/master/Presentacion/CrearPublicacion.png?raw=true)
 >Success.
 
 -**Publicación Creada.**
