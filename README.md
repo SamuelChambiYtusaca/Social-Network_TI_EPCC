@@ -77,7 +77,7 @@ Las propias consultas son también JSON, por lo que se programan fácilmente. Ol
 #### INSTALACIÓN
  Clone este repositorio con la linea de comando o descargue y descomprima la carpeta zip con el código del repositorio.
 ```shell 
-git clone https://github.com/JPostigo48/DBP-B-Social-Network-EPCC.git
+https://github.com/SamuelChambiYtusaca/Social-Network_TI_EPCC.git
 ```
 #### Inicialización Backend
 - Abrir una consola cmd en la carpeta base del proyecto.
